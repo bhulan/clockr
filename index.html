@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog clock</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        body{
+            background: linear-gradient(90deg, rgba(2,0,.6,1)0%, rgba(9,9,121,1)35%, rgba(0,212,255,1)100%);
+        
+            
+        }
+        .maincon{
+            width: 550px;
+            height: 550px;
+            margin: auto;
+            margin-top: 7%;
+            justify-content: center;
+           display: flex;
+           border: 5px solid black;
+           animation: move .4s infinite;
+            border-radius: 50%;
+            box-shadow: 15px 15px 30px rgb(156, 111, 28),-15px -15px 30px rgb(156, 111, 28);
+        }
+@keyframes move {
+  20% {border: 10px solid rgb(255, 15, 15);}
+  40% {border: 10px solid rgb(231, 255, 15);}
+  60% {border: 10px solid rgb(15, 255, 35);}
+  80% {border: 10px solid rgb(138, 5, 179);}
+  100% {border: 10px solid rgb(233, 233, 233);}
+  50% {border: 10px solid rgb(3, 1, 102);}
+}
+        
+
+        .container{
+            width: 500px;
+            height: 500px;
+            border: 2px solid black;
+            margin: auto;
+            justify-content: center;
+            background-image: url('rim.jpg');
+           display: flex;
+            border-radius: 50%;
+            background-size: cover;
+            z-index: -1;
+            box-shadow:inset 15px 15px 30px rgb(156, 111, 28),inset -15px -15px 30px rgb(156, 111, 28);
+            
+        }
+
+        .clock{
+            width: 500px;
+            height: 500px;
+            border: 3px solid darkturquoise;
+            position: absolute;
+            display: flex;
+            border-radius: 50%;
+            background-image: url('clock.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url('clock.png');
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           z-index: 20;
+        }
+        .hr{
+            width: 200px;
+            height: 230px;
+        }
+        .min{
+            width: 200px;
+            height: 280px;
+        }
+        .sec{
+            width: 200px;
+            height: 320px;
+        }
+        .hr, .min, .sec{
+           
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            
+        }
+        .clock::before
+        {
+            content: '';
+            height: 15px;
+            width: 15px;
+            background-color: rgb(34, 15, 15);
+            border-radius: 50%;
+            border: 2px solid white;
+           
+        }
+        .hr::before{
+            position: absolute;
+            content: '';
+            width: 10px;
+            height: 110px;
+            background-color: black;
+            z-index: 1;
+            border-radius: 50%;
+        }
+        .min::before{
+            position: absolute;
+            content: '';
+            width: 6px;
+            height: 140px;
+            background-color: black;
+            z-index: 3;
+            border-radius: 50%;
+        }
+        .sec::before{
+            position: absolute;
+            content: '';
+            width: 4px;
+            height: 180px;
+            background-color: black;
+            z-index: 5;
+            border-radius: 50%;
+        }
+        .foot{
+            font-family:"monotype corsiva" ;
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+            color: red;
+            justify-content: center;
+            display: flex;
+           
+            
+        }
+        .foot2{
+            font-family:"monotype corsiva" ;
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            color: rgb(126, 241, 50);
+           
+        }
+        .fotter{
+            width: 100%;
+           display: inline-block;
+           justify-content: center;
+           text-align: center;
+
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="maincon">
+    <div class="container">
+        <div class="clock">
+            <div class="hr" id="hr"></div>
+            <div class="min" id="min"></div>
+            <div class="sec" id="sec"></div>
+
+        </div>
+    </div>
+    </div>
+    <br><br>
+    <div class="fotter">
+        <div class="foot">
+            HAPPY BIRTHDAY<br> 
+            </div>
+            <div class="foot2">
+            TO YOU'21
+      </div>
+    </div>
+    <script>
+        const hour=document.getElementById('hr');
+        const minute=document.getElementById('min');
+        const second=document.getElementById('sec');
+        setInterval(() => {
+            let tim=new Date();
+           let hr=tim.getHours()*30;
+           let min=tim.getMinutes()*6;
+           let sec=tim.getSeconds()*6;
+            hour.style.transform=`rotateZ(${(hr)+min/12}deg)`;
+            minute.style.transform=`rotateZ(${min}deg)`;
+            second.style.transform=`rotateZ(${sec}deg)`;
+
+        });
+    </script>
+</body>
+</html>
